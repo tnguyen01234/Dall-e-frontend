@@ -88,7 +88,7 @@ function Home() {
       <div className="mt-10">
         {loading ? (
           <div className="flex justify-center items-center">
-            <div class="spinner">
+            <div class="spinner mt-5">
               <div class="spinnerin"></div>
             </div>
           </div>
