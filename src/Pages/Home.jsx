@@ -22,12 +22,15 @@ function Home() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://dall-e-zo5w.onrender.com/api/v1/posts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://dall-e-zo5w.onrender.com/api/v1/posts",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
@@ -74,17 +77,20 @@ function Home() {
       </div>
       <div className="mt-16">
         <FormField
-        LabelName="Search Posts"
-        type='text'
-        name='text'
-        placeholder="Search posts"
-        value={searchText}
-        handleChange={handleSearchChange} />
+          LabelName="Search Posts"
+          type="text"
+          name="text"
+          placeholder="Search posts"
+          value={searchText}
+          handleChange={handleSearchChange}
+        />
       </div>
       <div className="mt-10">
         {loading ? (
           <div className="flex justify-center items-center">
-            <Loader />
+            <div class="spinner">
+              <div class="spinnerin"></div>
+            </div>
           </div>
         ) : (
           <>
@@ -96,7 +102,10 @@ function Home() {
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
               {searchText ? (
-                <RenderCards data={searchResults} title="No search results found" />
+                <RenderCards
+                  data={searchResults}
+                  title="No search results found"
+                />
               ) : (
                 <RenderCards data={allPosts} title="No posts found" />
               )}
